@@ -1,0 +1,21 @@
+iapiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-nginx-nodeport
+spec:
+  selector:
+    matchLabels:
+      run: my-nginx-nodeport
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        run: my-nginx-nodeport
+    spec:
+      containers:
+      - name: my-nginx-nodeport
+        image: 172.27.16.100:5000/my_mtk:20180718v3
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+
