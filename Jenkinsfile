@@ -3,7 +3,7 @@ node('mbjone17001') {
     checkout scm
 
     env.DOCKER_API_VERSION="1.23"
-    tag = "20180718v5"
+    tag = "20180718v6"
     appName = "my_mtk"
     registryHost = "172.27.16.100:5000/"
     imageName = "${registryHost}${appName}:${tag}"
