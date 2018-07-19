@@ -12,6 +12,9 @@ node('mbjone17001') {
     stage "Build" 
 	sh "docker build -t ${imageName} ."
     
+    stage "Unit test" 
+        sh echo unit test""
+    
     stage "Push" 
         sh "docker push ${imageName}"
     
