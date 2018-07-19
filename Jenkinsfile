@@ -3,7 +3,8 @@ node('mbjone17001') {
     checkout scm
 
     env.DOCKER_API_VERSION="1.23"
-    tag = "20180718v7"
+    sh "git rev-parse --short HEAD > commit-id"
+    tag = readFile('commit-id').replace("\n", "").replace("\r", "") 
     appName = "my_mtk"
     registryHost = "172.27.16.100:5000/"
     imageName = "${registryHost}${appName}:${tag}"
