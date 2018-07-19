@@ -19,7 +19,8 @@ node('mbjone17001') {
 
     stage "Deploy"
 
-        sh "sed 's#172.27.16.100:5000/my_mtk:20180718v3#'$BUILDIMG'#' my_mtk.yaml | kubectl apply -f -"
+        sh "sed 's#172.27.16.100:5000/my_mtk:20180718v3#'$BUILDIMG'#' my_mtk.yaml > my_mtk.tmp.yaml
+	sh "kubectl apply -f my_mtk.tmp.yaml"
         sh "kubectl rollout status deployment.apps/my-nginx-nodeport"
 
 }
