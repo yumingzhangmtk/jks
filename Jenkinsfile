@@ -1,4 +1,4 @@
-node {
+node('mbjone17001') {
 
     checkout scm
 
