@@ -1,7 +1,11 @@
 def label = "mypod-${UUID.randomUUID().toString()}"
 podTemplate(label: label, cloud: 'kubernetes', containers: [
 	containerTemplate(name: 'jnlp', image: 'ninech/jnlp-slave-with-docker', args: '${computer.jnlpmac} ${computer.name}')
-]) {
+	],
+	volumes: [
+	hostPathVolume(hostPath: '/var/run/docker.sock', mountPath: '/var/run/docker.sock')
+	]
+) {
     node(label) {
     	checkout scm
 
